@@ -66,6 +66,10 @@ struct cmd *split_line(char *line)
 				new_pipe->args[i] = NULL;
 			new_pipe->length = 0;
 			new_pipe->next = NULL;
+			new_pipe->in_file  = NULL;
+    		new_pipe->out_file = NULL;
+		    new_pipe->in = 0;  
+    		new_pipe->out = 1; 
 			temp->next = new_pipe;
 			temp = new_pipe;
         } else if (token[0] == '<') {
