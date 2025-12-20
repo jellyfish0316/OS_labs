@@ -9,7 +9,7 @@
 #define BUFSIZE  1024
 char buf[BUFSIZE]; //kernel buffer
 
-static ssize_t Mywrite(struct file *fileptr, const char __user *ubuf, size_t buffer_len, loff_t *offset){
+static ssize_t Mywrite(struct file *fileptr, const char __user *ubuf, size_t buffer_len, loff_t *offset){ //buffer len is the length of (Thread X says hello!)
     /*Your code here*/
     copy_from_user(buf, ubuf, buffer_len);
 
@@ -21,10 +21,10 @@ static ssize_t Mywrite(struct file *fileptr, const char __user *ubuf, size_t buf
 }
 
 
-static ssize_t Myread(struct file *fileptr, char __user *ubuf, size_t buffer_len, loff_t *offset){
+static ssize_t Myread(struct file *fileptr, char __user *ubuf, size_t buffer_len, loff_t *offset){ //buffer len is the buffer limit user declared
     /*Your code here*/
     int len;
-    len = strlen(buf);
+    len = strlen(buf); // actual length of data currently stored in the buffer
 
     if(*offset > 0){
         return 0;
